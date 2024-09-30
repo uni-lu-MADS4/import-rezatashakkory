@@ -1,7 +1,7 @@
 ---
 title: "Import practical"
-author: Your name here
-date: today
+author: Reza Tashakkori
+date: 30th of September
 format: html
 ---
 
@@ -28,7 +28,7 @@ We will take advantage of the RStudio projects and store data files in a sub-fol
 5. Add a code chunk to load the libraries. You only need `readr`.
 
 ```{r}
-# Your answer in code
+library(readr)
 
 ```
 
@@ -77,7 +77,7 @@ For example, you folder structure could be (depending on the picked names) as he
 
 
 ```{r}
-# Your answer in code
+readr::read_delim("data/blood_fat.csv")
 
 ```
 
@@ -91,7 +91,9 @@ If we are happy with the guessed delimiter and the column names / types, we coul
 ##### Load again the same file, silencing the `read_delim()` message
 
 ```{r}
-# Your answer in code
+# Your answer in code 
+readr::read_delim("data/blood_fat.csv",
+                  show_col_types = FALSE)
 
 
 ```
@@ -106,7 +108,8 @@ If we are happy with the guessed delimiter and the column names / types, we coul
 
 
 
-> Your answer as text
+> A tibble: 25 * 5 
+(Rows: 25 Columns: 5)
 
 
 
@@ -114,7 +117,8 @@ If we are happy with the guessed delimiter and the column names / types, we coul
 
 
 
-> Your answer as text
+> age <dbl>
+The type of the age columne is "double"
 
 
 
@@ -130,9 +134,12 @@ In the `col_types = cols(....)` you can use the columns bare names and either th
 
 
 ```{r}
-# Your answer in code
+df <- readr::read_delim("data/blood_fat.csv",
+             col_types = cols(id = 'i',
+                              age = 'i'))
 
 
+df
 
 ```
 
@@ -141,9 +148,15 @@ In the `col_types = cols(....)` you can use the columns bare names and either th
 
 ```{r}
 # Your answer in code
+df2 <- readr::read_delim("data/blood_fat.csv",
+             col_types = cols(id = 'i',
+                              group = '_',
+                              weight = '_',
+                              age = 'i',
+                              fat = '_'))
 
 
-
+df2
 
 ```
 
